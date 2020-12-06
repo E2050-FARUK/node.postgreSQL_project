@@ -1,4 +1,4 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
 
 //connect to db
 // postgres://user:pass@example.com:5432/dbname
@@ -15,12 +15,22 @@ sequelize
 // recruiter table in the clarusway db
 
 // modelname, attribute, options
-sequelize.define(
-  "recruiter",
+const UserModel = sequelize.define(
+  "recruiters",
   {
     //attributes
+    //id, firstName, lastName, createdAt, updatedAt
+    firstName: {
+      type: DataTypes.STRING,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+    },
   },
   {
     //options
+    freezeTableName: true,
   }
 );
+
+module.exports = UserModel;
